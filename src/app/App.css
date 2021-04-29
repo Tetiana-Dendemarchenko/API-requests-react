@@ -1,0 +1,32 @@
+body {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+    color: #372917;
+    background-color: #efe7d0;
+}
+
+a {
+    height: 50px;
+    padding: 5px 40px;
+    margin: 50px;
+    background-color: rgba(237, 208, 103, .3);
+    border: 1px solid #846033;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #372917;
+    font-size: 18px;
+}
+
+table {
+    margin-top: 40px;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid white;
+    width: auto;
+    margin: 100px;
+}
+

@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 
+const usersUrl = 'https://jsonplaceholder.typicode.com/users';
+
 class Table1 extends Component {
     constructor(props) {
-        super(props)
+        super ( props )
         this.state = {
             users: [],
             isLoading: false,
@@ -11,23 +13,27 @@ class Table1 extends Component {
     }
 
     async componentDidMount() {
-        this.setState({isLoading: true})
-        const response = await fetch('https://jsonplaceholder.typicode.com/users')
+        this.setState ( { isLoading: true } )
+        const response = await fetch ( usersUrl );
 
-        if (response.ok) {
-            const users = await response.json()
-            this.setState({users, isLoading: false})
+        if ( response.ok ) {
+            const users = await response.json ()
+            this.setState ( { users, isLoading: false } )
         } else {
-            this.setState({isError: true, isLoading: false})
+            this.setState ( { isError: true, isLoading: false } )
         }
     }
 
     renderTableHeader = () => {
-        return Object.keys(this.state.users[0]).map(attr => <th key={attr}>{attr.toUpperCase()}</th>)
+        return Object.keys ( this.state.users[0] ).map ( attr => <th key={attr}>{attr.toUpperCase ()}</th> )
     }
 
+    street;
+    website;
+    company;
+
     renderTableRows = () => {
-        return this.state.users.map(user => {
+        return this.state.users.map ( user => {
             return (
                 <tr key={user.id}>
                     <td>{user.id}</td>
@@ -40,17 +46,17 @@ class Table1 extends Component {
                     <td>{user.company.name}</td>
                 </tr>
             )
-        })
+        } )
     }
 
     render() {
-        const {users, isLoading, isError} = this.state
+        const { users, isLoading, isError } = this.state
 
-        if (isLoading) {
+        if ( isLoading ) {
             return <div>Loading...</div>
         }
 
-        if (isError) {
+        if ( isError ) {
             return <div>Error</div>
         }
 
@@ -59,11 +65,11 @@ class Table1 extends Component {
                 <table>
                     <thead>
                     <tr>
-                        {this.renderTableHeader()}
+                        {this.renderTableHeader ()}
                     </tr>
                     </thead>
                     <tbody>
-                    {this.renderTableRows()}
+                    {this.renderTableRows ()}
                     </tbody>
                 </table>
             ) : (
